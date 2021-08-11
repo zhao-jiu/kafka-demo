@@ -25,8 +25,7 @@ public class KafkaProducer {
     }
 
     /**
-     * 发送kafka测试消息
-     *
+     * <h2>发送kafka测试消息<h2/>
      * @return 响应结果
      */
     @GetMapping("test")
