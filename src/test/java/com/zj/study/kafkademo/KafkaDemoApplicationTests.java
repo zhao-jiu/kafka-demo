@@ -8,7 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 class KafkaDemoApplicationTests {
 
-    kafkaHandler kafkaHandler;
+    private final kafkaHandler kafkaHandler;
 
     @Autowired
     public KafkaDemoApplicationTests(kafkaHandler kafkaHandler) {
