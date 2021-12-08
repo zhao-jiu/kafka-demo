@@ -29,7 +29,7 @@ public class kafkaHandler {
      * @param id 用户id
      */
     public void sendMessages(String id) {
-        var user = new User().setId(id).setUsername("tom").setState("0");
+        var user = new User().setId(id).setUsername("tom" + id).setState("0");
         kafkaTemplate.send(MessageTopic.TEST_USER_TOPIC, JSONObject.toJSONString(user));
         log.info("发送消息到kafka，消息内容：{}", user);
     }
