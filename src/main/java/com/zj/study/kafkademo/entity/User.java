@@ -5,8 +5,7 @@ import lombok.experimental.Accessors;
 
 /**
  * @author 赵赳
- * @since: 2021/8/10 17:56
- * @desc:
+ * @since 2021/8/10 17:56
  */
 @Data
 @Accessors(chain = true)

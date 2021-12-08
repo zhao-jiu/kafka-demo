@@ -2,8 +2,7 @@ package com.zj.study.kafkademo.common;
 
 /**
  * @author 赵赳
- * @since: 2021/8/10 17:21
- * @desc:
+ * @since 2021/8/10 17:21
  */
 public class MessageTopic {
 

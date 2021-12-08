@@ -12,8 +12,8 @@ import java.util.Optional;
 
 /**
  * @author 赵赳
- * @since: 2021/8/10 17:19
- * @desc: kafka消费者
+ * @since 2021/8/10 17:19
+ * @desc kafka消费者
  */
 @Slf4j
 @Component

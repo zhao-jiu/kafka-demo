@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @author 赵赳
- * @since: 2021/8/10 17:13
- * @desc: 测试发送kafka消息
+ * @since 2021/8/10 17:13
+ * @desc 测试发送kafka消息
  */
 @Slf4j
 @RestController
