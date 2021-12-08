@@ -1,7 +1,7 @@
 package com.zj.study.kafkademo.producer;
 
-import com.alibaba.fastjson.JSONObject;
 import com.zj.study.kafkademo.common.MessageTopic;
+import com.zj.study.kafkademo.handler.kafkaHandler;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
@@ -17,24 +17,41 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class KafkaProducer {
 
-    KafkaTemplate<String, String> kafkaTemplate;
+  private final KafkaTemplate<String, String> kafkaTemplate;
 
-    @Autowired
-    public KafkaProducer(KafkaTemplate<String, String> kafkaTemplate) {
-        this.kafkaTemplate = kafkaTemplate;
-    }
+  private final kafkaHandler kafkaHandler;
 
-    /**
-     * <h2>发送kafka测试消息<h2/>
-     * @return 响应结果
-     */
-    @GetMapping("test")
-    public String testKafka() {
-        String str = new String("hello kafka!");
-        kafkaTemplate.send(MessageTopic.TEST_TOPIC, JSONObject.toJSONString(str));
-        log.info("发送消息到kafka，消息体：{}", str);
-        return "成功发送消息到kafka";
+  @Autowired
+  public KafkaProducer(KafkaTemplate<String, String> kafkaTemplate,
+      com.zj.study.kafkademo.handler.kafkaHandler kafkaHandler) {
+    this.kafkaTemplate = kafkaTemplate;
+    this.kafkaHandler = kafkaHandler;
+  }
+
+  /**
+   * <h2>发送kafka测试消息<h2/>
+   *
+   * @return 响应结果
+   */
+  @GetMapping("test")
+  public String testKafka() {
+    String str = "hello kafka!";
+    kafkaTemplate.send(MessageTopic.TEST_TOPIC, str);
+    return "成功发送消息到kafka";
+  }
+
+  /**
+   * <h2>发送kafka测试消息<h2/>
+   *
+   * @return 响应结果
+   */
+  @GetMapping("user")
+  public String testKafkaSendEntity() {
+    for (int i = 0; i < 10; i++) {
+      kafkaHandler.sendMessages(String.valueOf(++i));
     }
+    return "成功发送消息到kafka";
+  }
 
 
 }
